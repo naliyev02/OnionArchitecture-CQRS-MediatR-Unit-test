@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "dEXiXeafI4h6WT20L6Yput1sqbNqY2TMsT2lF4jLhbCLzQVDNMi3c63Wx70f8hOZDdv2Jz9FBPTJR5lCm82V2w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Nicat\\Desktop\\OnionArchitectureApp\\src\\Presentation\\OnionArchitectureApp.WebAPI\\OnionArchitectureApp.WebAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nicat\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.10\\microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Nicat\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
