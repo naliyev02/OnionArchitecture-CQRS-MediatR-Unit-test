@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\OnionArchitectureApp.Application\OnionArchitectureApp.Application.csproj" />
+    <ProjectReference Include="..\..\Core\OnionArchitectureApp.Domain\OnionArchitectureApp.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
