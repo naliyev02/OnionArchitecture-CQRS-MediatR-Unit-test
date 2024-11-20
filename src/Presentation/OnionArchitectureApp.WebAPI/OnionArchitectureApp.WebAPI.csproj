@@ -14,6 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\OnionArchitectureApp.Application\OnionArchitectureApp.Application.csproj" />
     <ProjectReference Include="..\..\Core\OnionArchitectureApp.Domain\OnionArchitectureApp.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\OnionArchitectureApp.Infrastructure\OnionArchitectureApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\OnionArchitectureApp.Persistence\OnionArchitectureApp.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
