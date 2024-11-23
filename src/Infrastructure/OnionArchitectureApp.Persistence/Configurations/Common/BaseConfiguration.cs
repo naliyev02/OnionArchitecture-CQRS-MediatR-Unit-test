@@ -14,7 +14,6 @@ public class BaseConfiguration<T> : IEntityTypeConfiguration<T> where T : BaseEn
     protected void BaseConfigure(EntityTypeBuilder<T> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).UseIdentityColumn();
 
         builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
     }

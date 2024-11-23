@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\Categories\" />
-    <Folder Include="Features\Commands\ProductTypes\" />
-    <Folder Include="Features\Queries\Categories\" />
-    <Folder Include="Features\Queries\ProductTypes\" />
+    <Compile Remove="Features\Commands\Categories\**" />
+    <Compile Remove="Features\Commands\ProductTypes\**" />
+    <Compile Remove="Features\Queries\Categories\**" />
+    <Compile Remove="Features\Queries\ProductTypes\**" />
+    <EmbeddedResource Remove="Features\Commands\Categories\**" />
+    <EmbeddedResource Remove="Features\Commands\ProductTypes\**" />
+    <EmbeddedResource Remove="Features\Queries\Categories\**" />
+    <EmbeddedResource Remove="Features\Queries\ProductTypes\**" />
+    <None Remove="Features\Commands\Categories\**" />
+    <None Remove="Features\Commands\ProductTypes\**" />
+    <None Remove="Features\Queries\Categories\**" />
+    <None Remove="Features\Queries\ProductTypes\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +28,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnionArchitectureApp.Domain\OnionArchitectureApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>
