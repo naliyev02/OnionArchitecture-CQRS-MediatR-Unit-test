@@ -1,18 +1,20 @@
 ﻿using MediatR;
 using OnionArchitectureApp.Application.Dtos.ProductDtos;
+using OnionArchitectureApp.Application.Wrappers;
+using System.Net;
 
 namespace OnionArchitectureApp.Application.Features.Queries.Products;
 
-public class GetByIdProductQueryHandler : IRequestHandler<GetByIdProductQuery, ProductGetByIdDto>
+public class GetByIdProductQueryHandler : IRequestHandler<GetByIdProductQuery, ResponseWrapper<ProductGetByIdDto>>
 {
-    public Task<ProductGetByIdDto> Handle(GetByIdProductQuery request, CancellationToken cancellationToken)
+    public Task<ResponseWrapper<ProductGetByIdDto>> Handle(GetByIdProductQuery request, CancellationToken cancellationToken)
     {
-        ProductGetByIdDto result = new ProductGetByIdDto()
+        ProductGetByIdDto product = new ProductGetByIdDto()
         {
             Id = Guid.NewGuid(),
             Name = "Product1"
         };
 
-        return Task.FromResult(result);
+        return ResponseWrapper<ProductGetByIdDto>.SuccessResult(product, HttpStatusCode.OK);
     }
 }

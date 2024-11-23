@@ -5,12 +5,12 @@ namespace OnionArchitectureApp.Application.Wrappers;
 
 public class ResponseWrapper<T>
 {
-    public bool? Success { get; set; }
+    public bool Success { get; set; }
     public T? Data { get; set; }
     public string? Exception { get; set; }
-    public HttpStatusCode? StatusCode { get; set; }
+    public HttpStatusCode StatusCode { get; set; }
 
-    public static ResponseWrapper<T> SuccessResult(T data, HttpStatusCode statusCode)
+    public async static Task<ResponseWrapper<T>> SuccessResult(T data, HttpStatusCode statusCode)
     {
         return new ResponseWrapper<T>
         {
@@ -20,7 +20,7 @@ public class ResponseWrapper<T>
         };
     }
 
-    public static ResponseWrapper<T> ErrorResult(string? exception, HttpStatusCode statusCode)
+    public async static Task<ResponseWrapper<T>> ErrorResult(string? exception, HttpStatusCode statusCode)
     {
         return new ResponseWrapper<T>
         {
@@ -29,5 +29,4 @@ public class ResponseWrapper<T>
             StatusCode = statusCode
         };
     }
-
 }
