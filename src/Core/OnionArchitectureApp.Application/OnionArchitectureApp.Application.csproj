@@ -7,13 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
     <Folder Include="Features\Commands\Categories\" />
     <Folder Include="Features\Commands\ProductTypes\" />
     <Folder Include="Features\Queries\Categories\" />
     <Folder Include="Features\Queries\ProductTypes\" />
-    <Folder Include="Parameters\" />
-    <Folder Include="Wrappers\" />
   </ItemGroup>
 
   <ItemGroup>
