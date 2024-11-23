@@ -10,8 +10,10 @@ public interface IGenericRepository<T>
     IQueryable<T> GetFiltered(Expression<Func<T, bool>> expression, params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includeProperties);
     Task<T> GetByIdAsync(Guid id, params Func<IQueryable<T>, IIncludableQueryable<T, object>>[] includeProperties);
     Task CreateAsync(T entity);
+    Task CreateRangeAsync(IEnumerable<T> entities);
     void Update(T entity);
     void Delete(T entity);
+    void DeleteRange(IEnumerable<T> entities);
     void SoftDelete(T entity);
     Task<bool> IsExistAsync(Expression<Func<T, bool>> expression, params string[] includes);
 

@@ -35,5 +35,23 @@ namespace OnionArchitectureApp.WebAPI.Controllers
         {
             return Ok(await mediator.Send(command));
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateProductCommand command)
+        {
+            return Ok(await mediator.Send(command));
+        }
+
+        [HttpDelete("/[action]")]
+        public async Task<IActionResult> SoftDelete(SoftDeleteProductCommand command)
+        {
+            return Ok(await mediator.Send(command));
+        }
+
+        [HttpDelete("/[action]")]
+        public async Task<IActionResult> HardDelete(HardDeleteProductCommand command)
+        {
+            return Ok(await mediator.Send(command));
+        }
     }
 }
