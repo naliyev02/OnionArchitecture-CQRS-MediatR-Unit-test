@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using OnionArchitectureApp.Application.Dtos.CategoryDtos;
+using OnionArchitectureApp.Application.Dtos.ProductCategoryDtos;
 using OnionArchitectureApp.Application.Dtos.ProductCategoryRelDtos;
 using OnionArchitectureApp.Application.Dtos.ProductDtos;
+using OnionArchitectureApp.Application.Dtos.ProductTypeDtos;
 using OnionArchitectureApp.Application.Features.Commands.Products;
+using OnionArchitectureApp.Application.Features.Commands.ProductTypes;
 using OnionArchitectureApp.Application.Features.Queries.Products;
 using OnionArchitectureApp.Domain.Entities;
 
@@ -25,10 +27,14 @@ public class AutoMapperProfile : Profile
         CreateMap<Product, CreateProductCommand>().ReverseMap();
 
         //ProductCategory
-        CreateMap<ProductCategory, CategoryGetAllDto>().ReverseMap();
+        CreateMap<ProductCategory, ProductCategoryGetAllDto>().ReverseMap();
 
         //ProductCategoryRel
         CreateMap<ProductCategoryRel, ProductCategoryRelPostDto>().ReverseMap();
+
+        //ProductType
+        CreateMap<ProductType, ProductTypeGetAllDto>().ReverseMap();
+        CreateMap<ProductType, CreateProductTypeCommand>().ReverseMap();
 
 
 

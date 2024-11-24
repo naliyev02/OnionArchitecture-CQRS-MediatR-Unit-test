@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using OnionArchitectureApp.Application.Dtos.CategoryDtos;
 using OnionArchitectureApp.Application.Dtos.ProductDtos;
 using OnionArchitectureApp.Application.Wrappers;
 

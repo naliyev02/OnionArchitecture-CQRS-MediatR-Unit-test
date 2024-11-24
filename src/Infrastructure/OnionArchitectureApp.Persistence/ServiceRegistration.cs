@@ -15,6 +15,8 @@ public static class ServiceRegistration
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
+        services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
         services.AddScoped<IProductCategoryRelRepository, ProductCategoryRelRepository>();
 
         return services;

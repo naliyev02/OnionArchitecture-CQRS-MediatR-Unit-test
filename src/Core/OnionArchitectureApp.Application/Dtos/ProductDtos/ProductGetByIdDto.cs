@@ -1,4 +1,4 @@
-﻿using OnionArchitectureApp.Application.Dtos.CategoryDtos;
+﻿using OnionArchitectureApp.Application.Dtos.ProductCategoryDtos;
 
 namespace OnionArchitectureApp.Application.Dtos.ProductDtos;
 
@@ -14,5 +14,5 @@ public class ProductGetByIdDto
     public Guid TypeId { get; set; }
     public string TypeName { get; set; }
     public DateTime CreatedAt { get; set; }
-    public ICollection<CategoryGetAllDto>? Categories { get; set; }
+    public ICollection<ProductCategoryGetAllDto>? Categories { get; set; }
 }

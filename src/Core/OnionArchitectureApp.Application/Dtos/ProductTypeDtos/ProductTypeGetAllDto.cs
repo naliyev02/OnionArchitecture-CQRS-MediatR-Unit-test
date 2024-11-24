@@ -1,6 +1,6 @@
-﻿namespace OnionArchitectureApp.Application.Dtos.CategoryDtos;
+﻿namespace OnionArchitectureApp.Application.Dtos.ProductTypeDtos;
 
-public class CategoryGetAllDto
+public class ProductTypeGetAllDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

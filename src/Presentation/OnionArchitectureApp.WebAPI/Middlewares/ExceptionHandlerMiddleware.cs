@@ -1,6 +1,5 @@
 ﻿using OnionArchitectureApp.Application.Exceptions.Common;
 using OnionArchitectureApp.Application.Wrappers;
-using Serilog;
 using System.Net;
 
 namespace OnionArchitectureApp.WebAPI.Middlewares;
@@ -26,7 +25,6 @@ public class ExceptionHandlerMiddleware
         {
             await HandleExceptionAsync(context, ex);
 
-            //Log.Error("Message => " + ex.Message + ". StatusCode => " + context.Response.StatusCode);
             _logger.LogError("Message => " + ex.Message + ". StatusCode => " + context.Response.StatusCode);
         }
     }

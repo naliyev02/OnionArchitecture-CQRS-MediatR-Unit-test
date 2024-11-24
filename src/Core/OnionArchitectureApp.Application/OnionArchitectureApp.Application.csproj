@@ -8,17 +8,11 @@
 
   <ItemGroup>
     <Compile Remove="Features\Commands\Categories\**" />
-    <Compile Remove="Features\Commands\ProductTypes\**" />
     <Compile Remove="Features\Queries\Categories\**" />
-    <Compile Remove="Features\Queries\ProductTypes\**" />
     <EmbeddedResource Remove="Features\Commands\Categories\**" />
-    <EmbeddedResource Remove="Features\Commands\ProductTypes\**" />
     <EmbeddedResource Remove="Features\Queries\Categories\**" />
-    <EmbeddedResource Remove="Features\Queries\ProductTypes\**" />
     <None Remove="Features\Commands\Categories\**" />
-    <None Remove="Features\Commands\ProductTypes\**" />
     <None Remove="Features\Queries\Categories\**" />
-    <None Remove="Features\Queries\ProductTypes\**" />
   </ItemGroup>
 
   <ItemGroup>
