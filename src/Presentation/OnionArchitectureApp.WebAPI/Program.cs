@@ -1,8 +1,7 @@
-
-using Microsoft.Extensions.DependencyInjection;
 using OnionArchitectureApp.Application;
-using OnionArchitectureApp.Application.Features.Queries.Products;
 using OnionArchitectureApp.Persistence;
+using OnionArchitectureApp.WebAPI.Middlewares;
+using Serilog;
 
 namespace OnionArchitectureApp.WebAPI
 {
@@ -12,9 +11,17 @@ namespace OnionArchitectureApp.WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
-
             builder.Services.AddControllers();
+
+            var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Configuration)
+                .Enrich.FromLogContext()
+                .CreateLogger();
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddSerilog(logger);
+
+            logger.Information("Hello, Serilog!");
 
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
@@ -22,7 +29,11 @@ namespace OnionArchitectureApp.WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+
             var app = builder.Build();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             if (app.Environment.IsDevelopment())
             {

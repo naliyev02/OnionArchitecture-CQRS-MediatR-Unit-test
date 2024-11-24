@@ -11,4 +11,9 @@
     <ProjectReference Include="..\..\Core\OnionArchitectureApp.Domain\OnionArchitectureApp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Factories\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
