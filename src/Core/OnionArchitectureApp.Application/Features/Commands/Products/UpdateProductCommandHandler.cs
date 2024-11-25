@@ -2,6 +2,7 @@
 using MediatR;
 using OnionArchitectureApp.Application.Exceptions.ProductExceptions;
 using OnionArchitectureApp.Application.Interfaces.Repositories;
+using OnionArchitectureApp.Application.Interfaces.UnitOfWork;
 using OnionArchitectureApp.Application.Wrappers;
 using OnionArchitectureApp.Domain.Entities;
 using System.Net;
@@ -10,24 +11,22 @@ namespace OnionArchitectureApp.Application.Features.Commands.Products;
 
 public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, ResponseWrapper<Guid>>
 {
-    private readonly IProductRepository _repository;
-    private readonly IProductCategoryRelRepository _categoryRelRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UpdateProductCommandHandler(IProductRepository repository, IProductCategoryRelRepository categoryRelRepository, IMapper mapper )
+    public UpdateProductCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        _repository = repository;
-        _categoryRelRepository = categoryRelRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
     public async Task<ResponseWrapper<Guid>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
-        var product = await _repository.GetByIdAsync(request.Id);
+        var product = await _unitOfWork.ProductRepository.GetByIdAsync(request.Id);
         if (product is null)
             throw new ProductNotFoundException(request.Id);
 
-        var transaction = await _repository.BeginTransactionAsync();
+        var transaction = await _unitOfWork.BeginTransactionAsync();
         try
         {
             product.Name = request.Name ?? product.Name;
@@ -43,7 +42,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
             {
                 var RelToRemove = product.ProductCategoryRels?.Where(r => !request.ProductCategoryRels.Any(dto => dto.Id == r.Id));
                 if (RelToRemove != null)
-                    _categoryRelRepository.DeleteRange(RelToRemove);
+                    _unitOfWork.ProductCategoryRelRepository.DeleteRange(RelToRemove);
 
                 foreach (var productCategoryRel in request.ProductCategoryRels)
                 {
@@ -60,13 +59,13 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
                             CategoryId = productCategoryRel.CategoryId!.Value
                         };
 
-                        await _categoryRelRepository.CreateAsync(newproductCategoryRel);
-                        await _repository.SaveAsync();
+                        await _unitOfWork.ProductCategoryRelRepository.CreateAsync(newproductCategoryRel);
+                        await _unitOfWork.CompleteAsync();
                     }
                 }
             }
 
-            await _repository.SaveAsync();
+            await _unitOfWork.CompleteAsync();
             await transaction.CommitAsync();
             await transaction.DisposeAsync();
         }
@@ -75,7 +74,7 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
             await transaction.RollbackAsync();
             return await ResponseWrapper<Guid>.ErrorResult(ex.Message, HttpStatusCode.Conflict);
         }
-       
+
 
         return await ResponseWrapper<Guid>.SuccessResult(product.Id, HttpStatusCode.OK);
     }

@@ -32,7 +32,8 @@ public class ExceptionHandlerMiddleware
     private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         int statusCode = (int)HttpStatusCode.InternalServerError;
-        string message = "Internal Server Error";
+        //string message = "Internal Server Error";
+        string message =exception.Message;
 
         if (exception is BaseException baseException)
         {
