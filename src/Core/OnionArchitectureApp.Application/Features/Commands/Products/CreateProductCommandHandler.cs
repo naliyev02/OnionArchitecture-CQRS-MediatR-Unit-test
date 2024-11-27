@@ -21,6 +21,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
     public async Task<ResponseWrapper<Guid>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var newProduct = _mapper.Map<Product>(request);
+        newProduct.Validate();
 
         await _unitOfWork.ProductRepository.CreateAsync(newProduct);
         await _unitOfWork.CompleteAsync();

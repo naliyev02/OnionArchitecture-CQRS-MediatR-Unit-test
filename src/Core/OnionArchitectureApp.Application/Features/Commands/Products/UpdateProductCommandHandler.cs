@@ -29,14 +29,13 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
         var transaction = await _unitOfWork.BeginTransactionAsync();
         try
         {
-            product.Name = request.Name ?? product.Name;
-            product.Description = request.Description ?? product.Description;
-            product.BrandName = request.BrandName ?? product.BrandName;
-            product.Price = request.Price ?? product.Price;
-            product.StockQuantity = request.StockQuantity ?? product.StockQuantity;
-            product.IsActive = request.IsActive ?? product.IsActive;
-            product.TypeId = request.TypeId ?? product.TypeId;
+            product.Name = request.Name;
+            product.Description = request.Description;
+            product.BrandName = request.BrandName;
+            product.TypeId = request.TypeId;
 
+            product.UpdatePrice(request.Price);
+            product.UpdateStockQuantity(request.StockQuantity);
 
             if (request.ProductCategoryRels is not null)
             {

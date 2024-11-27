@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnionArchitectureApp.Application.Exceptions.ProductTypeExceptions;
-using OnionArchitectureApp.Application.Interfaces.Repositories;
 using OnionArchitectureApp.Application.Interfaces.UnitOfWork;
 using OnionArchitectureApp.Application.Wrappers;
 
@@ -24,8 +23,8 @@ public class UpdateProductTypeCommandHandler : IRequestHandler<UpdateProductType
         if (productType is null)
             throw new ProductTypeNotFoundException(request.Id);
 
-        productType.Name = request.Name ?? productType.Name;
-        productType.Description = request.Description ?? productType.Description;
+        productType.Name = request.Name;
+        productType.Description = request.Description;
 
         await _unitOfWork.CompleteAsync();
 

@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using OnionArchitectureApp.Application.Dtos.ProductDtos;
-using OnionArchitectureApp.Application.Interfaces.Repositories;
 using OnionArchitectureApp.Application.Interfaces.UnitOfWork;
 using OnionArchitectureApp.Application.Wrappers;
 using System.Net;
